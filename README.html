@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="markdown2pdf">markdown2pdf</h1>
+<p>markdownをpdfへ変換する方法のメモ</p>
+<h2 id="対象">対象</h2>
+<ul>
+<li>mdを使って文書をつくりたい</li>
+<li>配布・展開するのにpdfが必要</li>
+<li>Texは大きすぎるので入れたくない</li>
+</ul>
+<h2 id="環境">環境</h2>
+<p>Windows8.1</p>
+<h2 id="pandoc">Pandoc</h2>
+<p>markdownをhtmlへ変換するソフト</p>
+<p><a href="http://pandoc.org/">Pandoc</a></p>
+<p>からインストール</p>
+<h2 id="wkhtmltopdf">wkhtmltopdf</h2>
+<p>htmlをpdfへ変換するソフト</p>
+<p><a href="http://wkhtmltopdf.org/">wkhtmltopdf</a></p>
+<p>からインストール<br />
+※私の環境では&quot;MSVC 2013&quot;版は動作せず、&quot;MinGW-w64&quot;版にて動作</p>
+<h2 id="pdf変換">pdf変換</h2>
+<p>Pandoc、wkhtmltopdf共にコマンドで動作するツールなのでBATファイルを作成</p>
+<pre><code>pandoc.exe -s %1 --output=%~dpn1.html
+&quot;C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf&quot; %~dpn1.html %~dpn1.pdf
+pause</code></pre>
+<p>あとはmarkdownファイルをBATファイルへドロップするのみです<br />
+markdownファイルに並列してhtmlファイルとpdfファイルが作成されます</p>
+<h2 id="出力物">出力物</h2>
+<p>このreadmeをBATファイルで変換した<a href="README.html">html</a>と<a href="README.pdf">pdf</a>を置いておきます</p>
+<h2 id="cssを設定">cssを設定</h2>
+<p>pandocのコマンドを変更してcssを設定します</p>
+<pre><code>pandoc.exe -c &quot;URL&quot; -s %1 --output=%~dpn1.html</code></pre>
+<p>URLの箇所にcssの保存先を入力ください</p>
+<p>上記設定では参照扱いになるのでhtmlに直接埋め込みたい場合は</p>
+<pre><code>pandoc.exe --include-in-header=&quot;URL&quot; -s %1 --output=%~dpn1.html</code></pre>
+<p>とする</p>
+</body>
+</html>

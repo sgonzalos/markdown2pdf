@@ -40,6 +40,10 @@ pause
 あとはmarkdownファイルをBATファイルへドロップするのみです  
 markdownファイルに並列してhtmlファイルとpdfファイルが作成されます  
 
+## 出力物
+
+このreadmeをBATファイルで変換した[html](README.html)と[pdf](README.pdf)を置いておきます
+
 ## cssを設定
 
 pandocのコマンドを変更してcssを設定します  
