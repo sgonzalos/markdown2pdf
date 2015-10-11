@@ -42,10 +42,18 @@ markdownファイルに並列してhtmlファイルとpdfファイルが作成�
 
 ## cssを設定
 
-pandocのコマンドを変更してcssを設定します
+pandocのコマンドを変更してcssを設定します  
 
 ```
 pandoc.exe -c "URL" -s %1 --output=%~dpn1.html
 ```
 
-URLの箇所にcssの保存先を入力ください
+URLの箇所にcssの保存先を入力ください  
+
+上記設定では参照扱いになるのでhtmlに直接埋め込みたい場合は  
+
+```
+pandoc.exe --include-in-header="URL" -s %1 --output=%~dpn1.html
+```
+
+とする  
