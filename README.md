@@ -39,3 +39,13 @@ pause
 ```
 あとはmarkdownファイルをBATファイルへドロップするのみです  
 markdownファイルに並列してhtmlファイルとpdfファイルが作成されます  
+
+## cssを設定
+
+pandocのコマンドを変更してcssを設定します
+
+```
+pandoc.exe -c "URL" -s %1 --output=%~dpn1.html
+```
+
+URLの箇所にcssの保存先を入力ください
