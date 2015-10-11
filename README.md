@@ -37,6 +37,8 @@ pandoc.exe -s %1 --output=%~dpn1.html
 "C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf" %~dpn1.html %~dpn1.pdf
 pause
 ```
+[BATファイル](markdown2pdf.bat)
+
 あとはmarkdownファイルをBATファイルへドロップするのみです  
 markdownファイルに並列してhtmlファイルとpdfファイルが作成されます  
 
@@ -60,4 +62,21 @@ URLの箇所にcssの保存先を入力ください
 pandoc.exe --include-in-header="URL" -s %1 --output=%~dpn1.html
 ```
 
-とする  
+この場合の[BATファイル](markdown2pdf-css.bat)
+
+`--include-in-header=`で指定するファイルは
+通常のcssファイルでは無く、先頭、末尾に
+
+```
+<style type="text/css">
+```
+
+```
+</style>
+```
+
+が必要です  
+
+[cssサンプルファイル](CSS.css)  
+
+css設定を踏まえて作成した[html](READMEｰcss.html),[pdf](README-css.pdf)  
